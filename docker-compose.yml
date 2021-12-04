@@ -11,7 +11,7 @@ services:
       MYSQL_USER: boyusr
       MYSQL_PASSWORD: boypass
     volumes:
-      - ./database:/docker-entrypoint-initdb.d
+      - ./database/mysql:/docker-entrypoint-initdb.d
   mongodb-service:
     image: mongo:latest
     container_name: mongo-container
