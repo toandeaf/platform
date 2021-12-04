@@ -1,0 +1,30 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.boys'
+version = '0.0.1-SNAPSHOT'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation project(":jake")
+    implementation project(":mcnab")
+    implementation project(":connor")
+}
+
+test {
+    useJUnitPlatform()
+}

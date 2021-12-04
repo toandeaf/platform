@@ -1,0 +1,26 @@
+version: '3'
+services:
+  postgres-service:
+    image: mysql:latest
+    container_name: mysql-container
+    ports:
+      - 3306:3306/tcp
+    environment:
+      MYSQL_ROOT_PASSWORD: justdembois
+      MYSQL_DATABASE: boybase
+      MYSQL_USER: boyusr
+      MYSQL_PASSWORD: boypass
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+  mongodb-service:
+    image: mongo:latest
+    container_name: mongo-container
+    ports:
+      - 27017:27017/tcp
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=boyusr
+      - MONGO_INITDB_ROOT_PASSWORD=boypass
+      - MONGO_INITDB_DATABASE=boymong
+    volumes:
+      - ./database/mysql:/docker-entrypoint-initdb.d
+      - ./database/mongo:/data/db
